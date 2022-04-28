@@ -7,31 +7,62 @@ public class TestInimigo : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    private NavMeshAgent inimigo;
-    private Transform ponto;
-    public float setDistance;
-    public float setRaio;
+    public NavMeshAgent agent;
+    public bool Seguir;
+    public float WaitTime;
+    public Transform visãoLocal;
+    public LayerMask layoso;
+
+    private Vector3 Latspos;
     void Start()
     {
-        inimigo = GetComponent<NavMeshAgent>();
-        ponto = GameObject.Find("Player").transform;
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        RaycastHit hit;
-
-        if(Physics.SphereCast(transform.position,setRaio,transform.forward,out hit, setDistance))
+        if (Seguir == true)
+        {
+            WaitTime = 0;
+        }
+		else
 		{
-            if(hit.transform.gameObject.tag == "Player")
-			{
-                inimigo.SetDestination(ponto.position);
+            if (WaitTime <= 2)
+                WaitTime += 1 * Time.deltaTime;
+            if(agent.destination != Latspos){
+                agent.destination = Latspos;
             }
 		}
-        
-        //inimigo.SetDestination(ponto.position);
 
-    }
+        if(WaitTime <= 2)
+		{
+            RaycastHit Hit = new RaycastHit();
+            visãoLocal.LookAt(agent.destination = GameObject.FindWithTag("Player").transform.position);
+            if (Physics.Raycast(visãoLocal.position, visãoLocal.forward, out Hit, 500, layoso, QueryTriggerInteraction.Ignore)) {
+                Debug.DrawLine(visãoLocal.position, Hit.point, Color.green);
+                if (Hit.transform.gameObject.tag == "Player")
+                {
+                    agent.destination = GameObject.FindWithTag("Player").transform.position;
+                }
+
+				else
+				{
+                    if (agent.destination != Latspos)
+                    {
+                        agent.destination = Latspos;
+                    }
+                }
+            }
+			else
+			{
+                if (agent.destination != Latspos)
+                {
+                    agent.destination = Latspos;
+                }
+            }
+        }
+	}
+
 	
 }
