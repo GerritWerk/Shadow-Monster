@@ -12,57 +12,69 @@ public class TestInimigo : MonoBehaviour
     public float WaitTime;
     public Transform visãoLocal;
     public LayerMask layoso;
+    public Transform pontos;
 
     private Vector3 Latspos;
     void Start()
     {
-       
+        pontos = GameObject.Find("Pontos").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        Pratrulha();
+        Seguindo();
+        
+	}
+    private void Pratrulha()
+	{
+        agent.SetDestination(pontos.position);
+	}
+	private void Seguindo()
+	{
         if (Seguir == true)
         {
             WaitTime = 0;
         }
-		else
-		{
+        else
+        {
             if (WaitTime <= 2)
                 WaitTime += 1 * Time.deltaTime;
-            if(agent.destination != Latspos){
-                agent.destination = Latspos;
+            if (agent.destination != Latspos)
+            {
+                Pratrulha();
             }
-		}
+        }
 
-        if(WaitTime <= 2)
-		{
+        if (WaitTime <= 2)
+        {
             RaycastHit Hit = new RaycastHit();
             visãoLocal.LookAt(agent.destination = GameObject.FindWithTag("Player").transform.position);
-            if (Physics.Raycast(visãoLocal.position, visãoLocal.forward, out Hit, 500, layoso, QueryTriggerInteraction.Ignore)) {
+            if (Physics.Raycast(visãoLocal.position, visãoLocal.forward, out Hit, 500, layoso, QueryTriggerInteraction.Ignore))
+            {
                 Debug.DrawLine(visãoLocal.position, Hit.point, Color.green);
                 if (Hit.transform.gameObject.tag == "Player")
                 {
                     agent.destination = GameObject.FindWithTag("Player").transform.position;
                 }
 
-				else
-				{
+                else
+                {
                     if (agent.destination != Latspos)
                     {
-                        agent.destination = Latspos;
+                        Pratrulha();
                     }
                 }
             }
-			else
-			{
+            else
+            {
                 if (agent.destination != Latspos)
                 {
-                    agent.destination = Latspos;
+                    Pratrulha();
                 }
             }
         }
-	}
-
-	
+    }
 }
