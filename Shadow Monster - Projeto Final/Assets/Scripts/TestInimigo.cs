@@ -12,12 +12,15 @@ public class TestInimigo : MonoBehaviour
     public float WaitTime;
     public Transform visãoLocal;
     public LayerMask layoso;
-    public Transform pontos;
+    public GameObject ponto1;
+    public GameObject ponto2;
 
     private Vector3 Latspos;
+    GameObject ponto_Atual;
     void Start()
     {
-        pontos = GameObject.Find("Pontos").transform;
+        
+        ponto_Atual = ponto1;
     }
 
     // Update is called once per frame
@@ -30,7 +33,7 @@ public class TestInimigo : MonoBehaviour
 	}
     private void Pratrulha()
 	{
-        agent.SetDestination(pontos.position);
+        agent.SetDestination(ponto_Atual.transform.position);
 	}
 	private void Seguindo()
 	{
@@ -77,4 +80,17 @@ public class TestInimigo : MonoBehaviour
             }
         }
     }
+
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject.name.Equals(ponto1.gameObject.name))
+		{
+            ponto_Atual = ponto2;
+		}
+		else
+		{
+            ponto_Atual = ponto1;
+		}
+        Pratrulha();
+	}
 }

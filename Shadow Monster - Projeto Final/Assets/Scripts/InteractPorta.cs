@@ -4,30 +4,46 @@ using UnityEngine;
 
 public class InteractPorta : MonoBehaviour
 {
-    [SerializeField] bool Estado = true;
-    [SerializeField] string NomeItemNecessario = "";
-    [SerializeField] string AnimacaoFalso = "Fecha";
-    [SerializeField] string AnimacaoVDD = "Abre";
-    Animator animator;
 
-    public void Action()
-	{
-        if (Estado)
-            animator.SetTrigger(AnimacaoVDD);
-        else
-            animator.SetTrigger(AnimacaoFalso);
-        Estado = !Estado;
-	}
+    public Animator animator;
+
+    private bool colidir;
+    private bool Porta_Abre = false;
+   
     // Start is called before the first frame update
     void Start()
     {
-        animator = transform.root.GetComponent<Animator>();
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+		if (Input.GetKeyDown(KeyCode.E)&& colidir)
+		{
+            Porta_Abre = true;
+            animator.SetTrigger("Abrir");
+        }
+    }
+
+	private void OnTriggerEnter(Collider col)
+	{
+		if (col.gameObject.CompareTag("Player"))
+		{
+            colidir = true;
+            
+		}
+	}
+
+    private void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.CompareTag("Player")) { 
+
+			if (Porta_Abre)
+			{
+                animator.SetTrigger("Fechar");
+			}
+            colidir = false;
+        }
     }
 }
-
