@@ -14,6 +14,11 @@ public class TestInimigo : MonoBehaviour
     public LayerMask layoso;
     public GameObject ponto1;
     public GameObject ponto2;
+    public GameObject ponto3;
+    public GameObject ponto4;
+    public GameObject ponto5;
+
+    public Animator animator;
 
     private Vector3 Latspos;
     GameObject ponto_Atual;
@@ -86,11 +91,25 @@ public class TestInimigo : MonoBehaviour
 		if (other.gameObject.name.Equals(ponto1.gameObject.name))
 		{
             ponto_Atual = ponto2;
+            //animator.Play("Patrulha");
 		}
-		else
-		{
+        else if (other.gameObject.name.Equals(ponto2.gameObject.name))
+        {
+            ponto_Atual = ponto3;
+
+        }
+        else if (other.gameObject.name.Equals(ponto3.gameObject.name))
+        {
+            ponto_Atual = ponto4;
+        }
+        else if (other.gameObject.name.Equals(ponto4.gameObject.name))
+        {
+            ponto_Atual = ponto5;
+        }
+        else if (other.gameObject.name.Equals(ponto5.gameObject.name))
+        {
             ponto_Atual = ponto1;
-		}
+        }
         Pratrulha();
 	}
 }
