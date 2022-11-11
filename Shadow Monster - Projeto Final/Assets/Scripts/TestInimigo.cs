@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class TestInimigo : MonoBehaviour
 {
@@ -111,5 +112,10 @@ public class TestInimigo : MonoBehaviour
             ponto_Atual = ponto1;
         }
         Pratrulha();
+
+		if (other.gameObject.tag == "Player")
+		{
+            SceneManager.LoadScene("SampleScene");
+		}
 	}
 }
