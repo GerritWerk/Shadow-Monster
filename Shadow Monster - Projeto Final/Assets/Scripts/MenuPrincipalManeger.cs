@@ -8,7 +8,12 @@ public class MenuPrincipalManeger : MonoBehaviour
 	[SerializeField] private string NomeLevel;
 	[SerializeField] private GameObject painelMenuInicial;
 	[SerializeField] private GameObject painelOpcoes;
-  public void Jogar()
+
+	public void Update()
+	{
+		Cursor.visible = true;
+	}
+	public void Jogar()
 	{
 		SceneManager.LoadScene(NomeLevel);
 	}
