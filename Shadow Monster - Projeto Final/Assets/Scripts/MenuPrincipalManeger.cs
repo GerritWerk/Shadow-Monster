@@ -12,6 +12,7 @@ public class MenuPrincipalManeger : MonoBehaviour
 	public void Update()
 	{
 		Cursor.visible = true;
+		Cursor.lockState = CursorLockMode.Confined;
 	}
 	public void Jogar()
 	{

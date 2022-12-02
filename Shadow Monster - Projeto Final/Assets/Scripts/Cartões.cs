@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class FimDeJogo : MonoBehaviour
+public class Cartões : MonoBehaviour
 {
-    private bool Colider;
-    
     // Start is called before the first frame update
+    private bool Colider;
+    public bool Com_Cartao;
     void Start()
     {
         
@@ -16,11 +15,11 @@ public class FimDeJogo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            if (Input.GetKeyDown(KeyCode.E) && Colider)
-            {
-                SceneManager.LoadScene("Menu");
-            }
-        
+        if(Input.GetKeyDown(KeyCode.E)&& Colider)
+		{
+            Com_Cartao = true;
+            //Destroy(gameObject);
+		}
     }
 
 	private void OnTriggerEnter(Collider col)
@@ -31,4 +30,6 @@ public class FimDeJogo : MonoBehaviour
 
         }
     }
+
+   
 }
