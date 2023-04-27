@@ -10,6 +10,7 @@ public class MenuGameManeger : MonoBehaviour
 	public void Voltar()
 	{
 		Menu.SetActive(false);
+		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
 		Time.timeScale = 1;
 	}

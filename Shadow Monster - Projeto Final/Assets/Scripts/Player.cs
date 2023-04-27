@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
             Menu.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             Time.timeScale = 0;
 		}

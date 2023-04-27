@@ -11,7 +11,7 @@ public class TestInimigo : MonoBehaviour
     public NavMeshAgent agent;
     public bool Seguir;
     public float WaitTime;
-    public Transform visãoLocal;
+    public Transform visaoLocal;
     public LayerMask layoso;
     public GameObject ponto1;
     public GameObject ponto2;
@@ -60,10 +60,10 @@ public class TestInimigo : MonoBehaviour
         if (WaitTime <= 2)
         {
             RaycastHit Hit = new RaycastHit();
-            visãoLocal.LookAt(agent.destination = GameObject.FindWithTag("Player").transform.position);
-            if (Physics.Raycast(visãoLocal.position, visãoLocal.forward, out Hit, 500, layoso, QueryTriggerInteraction.Ignore))
+            visaoLocal.LookAt(agent.destination = GameObject.FindWithTag("Player").transform.position);
+            if (Physics.Raycast(visaoLocal.position, visaoLocal.forward, out Hit, 500, layoso, QueryTriggerInteraction.Ignore))
             {
-                Debug.DrawLine(visãoLocal.position, Hit.point, Color.green);
+                Debug.DrawLine(visaoLocal.position, Hit.point, Color.green);
                 if (Hit.transform.gameObject.tag == "Player")
                 {
                     agent.destination = GameObject.FindWithTag("Player").transform.position;
@@ -113,9 +113,11 @@ public class TestInimigo : MonoBehaviour
         }
         Pratrulha();
 
-		if (other.gameObject.tag == "Player")
-		{
-            SceneManager.LoadScene("SampleScene");
-		}
 	}
+
+    private void OnCollisionEnter(Collision collision){
+        if(collision.gameObject.tag == "Player"){
+            SceneManager.LoadScene("SampleScene");
+        }
+    }
 }
