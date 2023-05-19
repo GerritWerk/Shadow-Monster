@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Inimigo
+  - "Cart\xE3o"
+  - Fim
   layers:
   - Default
   - TransparentFX

@@ -6,7 +6,7 @@ public class Cartões : MonoBehaviour
 {
     // Start is called before the first frame update
     private bool Colider;
-    public bool Com_Cartao;
+    public bool Com_Cartao = false;
     void Start()
     {
         
@@ -18,7 +18,7 @@ public class Cartões : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E)&& Colider)
 		{
             Com_Cartao = true;
-            //Destroy(gameObject);
+            gameObject.SetActive(false);
 		}
     }
 
@@ -29,6 +29,10 @@ public class Cartões : MonoBehaviour
             Colider = true;
 
         }
+    }
+
+    public bool FoiPega(){
+        return Com_Cartao;
     }
 
    

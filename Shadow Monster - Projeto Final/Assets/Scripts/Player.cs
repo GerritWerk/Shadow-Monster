@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     Vector3 move;
 	public float speed;
     public float gravity;
+    public bool temCartao = false;
+    private bool saida;
     [SerializeField] private GameObject Menu;
     // Start is called before the first frame update
     void Start()
@@ -46,5 +48,23 @@ public class Player : MonoBehaviour
         
 
         cc.Move(move * Time.deltaTime);
+    }
+
+    void OnTriggerEnter(Collider other){
+        if(other.CompareTag("Cartão")){
+            //other.GetComponent<Cartões>().Pegar();
+            temCartao = true;
+        }
+
+        else if (other.CompareTag("Fim")){
+            saida = true;
+            if(temCartao || other.GetComponent<Cartões>().FoiPega()){
+                SceneManager.LoadScene("Menu");
+            }
+
+            else{
+                Debug.Log("Você não tem o Cartão");
+            }
+        }
     }
 }
