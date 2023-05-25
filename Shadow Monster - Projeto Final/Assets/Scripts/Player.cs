@@ -32,6 +32,9 @@ public class Player : MonoBehaviour
             Cursor.visible = true;
             Time.timeScale = 0;
 		}
+        if (Input.GetKeyDown(KeyCode.E)&&saida){
+            SceneManager.LoadScene("Menu");
+        }
     }
 
 	private void MovePlayer()
@@ -57,9 +60,10 @@ public class Player : MonoBehaviour
         }
 
         else if (other.CompareTag("Fim")){
-            saida = true;
+            
             if(temCartao || other.GetComponent<Cartões>().FoiPega()){
-                SceneManager.LoadScene("Menu");
+                //SceneManager.LoadScene("Menu");
+                saida = true;
             }
 
             else{
