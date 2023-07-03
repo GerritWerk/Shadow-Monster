@@ -17,8 +17,8 @@ public class Camera : MonoBehaviour
     float smoothRotx = 0;
     float smoothRoty = 0;
 
-    float smoothCoefx = 0.005f;
-    float smoothCoefy = 0.005f;
+    float smoothCoefx = 0.000f;
+    float smoothCoefy = 0.000f;
         
     // Start is called before the first frame update
     void Start()
