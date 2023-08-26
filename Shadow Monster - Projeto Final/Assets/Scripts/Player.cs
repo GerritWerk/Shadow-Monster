@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public bool temCartao = false;
     private bool saida;
     [SerializeField] private GameObject Menu;
+    
     // Start is called before the first frame update
     void Start()
     {
