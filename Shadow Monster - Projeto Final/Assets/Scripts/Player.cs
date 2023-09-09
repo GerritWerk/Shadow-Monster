@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     public bool temCartao = false;
     private bool saida;
     [SerializeField] private GameObject Menu;
+
+    public AudioSource passos;
     
     // Start is called before the first frame update
     void Start()
@@ -36,6 +38,15 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E)&&saida){
             SceneManager.LoadScene("Menu");
         }
+
+        if(move != Vector3.zero){
+            passos.Play();
+        }
+
+        if(move == Vector3.zero){
+            passos.Stop();
+        }
+
     }
 
 	private void MovePlayer()
@@ -45,11 +56,11 @@ public class Player : MonoBehaviour
             move = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
             move = transform.TransformDirection(move);
             move *= speed;
-
+            
            
         }
         move.y -= gravity * Time.deltaTime;
-        
+        //passos.Play();
 
         cc.Move(move * Time.deltaTime);
     }

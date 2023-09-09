@@ -9,6 +9,8 @@ public class MenuPrincipalManeger : MonoBehaviour
 	[SerializeField] private GameObject painelMenuInicial;
 	[SerializeField] private GameObject painelOpcoes;
 
+	[SerializeField] private GameObject painelCreditos;
+
 	public void Update()
 	{
 		Cursor.visible = true;
@@ -27,6 +29,16 @@ public class MenuPrincipalManeger : MonoBehaviour
   public void FecharOpcoes()
 	{
 		painelOpcoes.SetActive(false);
+		painelMenuInicial.SetActive(true);
+	}
+
+	public void AbrirCreditos(){
+		painelMenuInicial.SetActive(false);
+		painelCreditos.SetActive(true);
+	}
+
+	public void FecharCreditos(){
+		painelCreditos.SetActive(false);
 		painelMenuInicial.SetActive(true);
 	}
   public void Sair()
