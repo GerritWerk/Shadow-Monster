@@ -16,11 +16,14 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject Menu;
 
     public AudioSource passos;
+
+    private bool audioPlay;
     
     // Start is called before the first frame update
     void Start()
     {
         //cc = GetComponent<CharacterController>();
+        //passos = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -39,12 +42,19 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene("Menu");
         }
 
-        if(move != Vector3.zero){
+        if(Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") !=0){
+           if(audioPlay == false){
             passos.Play();
+            audioPlay = true;
+            
+           }
+           
         }
 
-        if(move == Vector3.zero){
+        else{
             passos.Stop();
+            audioPlay = false;
+            
         }
 
     }
@@ -63,6 +73,8 @@ public class Player : MonoBehaviour
         //passos.Play();
 
         cc.Move(move * Time.deltaTime);
+
+       
     }
 
     void OnTriggerEnter(Collider other){

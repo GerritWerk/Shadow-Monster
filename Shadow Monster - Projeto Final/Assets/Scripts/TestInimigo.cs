@@ -20,6 +20,7 @@ public class TestInimigo : MonoBehaviour
     public GameObject ponto5;
 
     public Animator animator;
+    public Light olhos;
 
     private Vector3 Latspos;
     GameObject ponto_Atual;
@@ -39,6 +40,7 @@ public class TestInimigo : MonoBehaviour
 	}
     private void Pratrulha()
 	{
+        olhos.enabled = false;
         agent.SetDestination(ponto_Atual.transform.position);
 	}
 	private void Seguindo()
@@ -59,6 +61,7 @@ public class TestInimigo : MonoBehaviour
 
         if (WaitTime <= 2)
         {
+            olhos.enabled=true;
             RaycastHit Hit = new RaycastHit();
             visaoLocal.LookAt(agent.destination = GameObject.FindWithTag("Player").transform.position);
             if (Physics.Raycast(visaoLocal.position, visaoLocal.forward, out Hit, 500, layoso, QueryTriggerInteraction.Ignore))
