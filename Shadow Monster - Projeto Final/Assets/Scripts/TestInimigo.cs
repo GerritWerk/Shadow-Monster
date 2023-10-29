@@ -21,6 +21,7 @@ public class TestInimigo : MonoBehaviour
 
     public Animator animator;
     public Light olhos;
+   // public Light olho2;
 
     private Vector3 Latspos;
     GameObject ponto_Atual;
@@ -36,11 +37,13 @@ public class TestInimigo : MonoBehaviour
 
         Pratrulha();
         Seguindo();
+       // animator.Play("mixamo_com");
         
 	}
     private void Pratrulha()
 	{
         olhos.enabled = false;
+        //olho2.enabled = false;
         agent.SetDestination(ponto_Atual.transform.position);
 	}
 	private void Seguindo()
@@ -62,6 +65,7 @@ public class TestInimigo : MonoBehaviour
         if (WaitTime <= 2)
         {
             olhos.enabled=true;
+            //olho2.enabled=true;
             RaycastHit Hit = new RaycastHit();
             visaoLocal.LookAt(agent.destination = GameObject.FindWithTag("Player").transform.position);
             if (Physics.Raycast(visaoLocal.position, visaoLocal.forward, out Hit, 500, layoso, QueryTriggerInteraction.Ignore))
@@ -95,7 +99,7 @@ public class TestInimigo : MonoBehaviour
 		if (other.gameObject.name.Equals(ponto1.gameObject.name))
 		{
             ponto_Atual = ponto2;
-            //animator.Play("Patrulha");
+            
 		}
         else if (other.gameObject.name.Equals(ponto2.gameObject.name))
         {

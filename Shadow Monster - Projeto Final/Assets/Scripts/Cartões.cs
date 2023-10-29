@@ -19,6 +19,7 @@ public class Cartões : MonoBehaviour
 		{
             Com_Cartao = true;
             gameObject.SetActive(false);
+            Debug.Log("Peguei?");
 		}
     }
 
@@ -27,7 +28,7 @@ public class Cartões : MonoBehaviour
         if (col.gameObject.CompareTag("Player"))
         {
             Colider = true;
-
+            Debug.Log("Tafufando?");
         }
     }
 
