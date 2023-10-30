@@ -91,7 +91,7 @@ public class Player : MonoBehaviour
             }
 
             else{
-                Debug.Log("Você não tem o Cartão");
+               // Debug.Log("Você não tem o Cartão");
             }
         }
     }
