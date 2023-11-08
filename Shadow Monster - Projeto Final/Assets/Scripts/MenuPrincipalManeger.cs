@@ -43,7 +43,7 @@ public class MenuPrincipalManeger : MonoBehaviour
 	}
   public void Sair()
 	{
-		Debug.Log("Sair do Jogo");
+		//Debug.Log("Sair do Jogo");
 		Application.Quit();
 	}
 }
