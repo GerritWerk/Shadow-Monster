@@ -7,9 +7,10 @@ public class Cartões : MonoBehaviour
     // Start is called before the first frame update
     private bool Colider;
     public bool Com_Cartao = false;
+    public AudioSource peguei;
     void Start()
     {
-        
+        peguei = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -19,6 +20,7 @@ public class Cartões : MonoBehaviour
 		{
             Com_Cartao = true;
             gameObject.SetActive(false);
+            peguei.Play();
             //Debug.Log("Peguei?");
 		}
     }

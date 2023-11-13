@@ -44,6 +44,7 @@ public class TestInimigo : MonoBehaviour
 	{
         olhos.enabled = false;
         //olho2.enabled = false;
+        agent.speed = 2;
         agent.SetDestination(ponto_Atual.transform.position);
 	}
 	private void Seguindo()
@@ -54,7 +55,7 @@ public class TestInimigo : MonoBehaviour
         }
         else
         {
-            if (WaitTime <= 2)
+            if (WaitTime <= 5)
                 WaitTime += 1 * Time.deltaTime;
             if (agent.destination != Latspos)
             {
@@ -62,10 +63,11 @@ public class TestInimigo : MonoBehaviour
             }
         }
 
-        if (WaitTime <= 2)
+        if (WaitTime <= 5)
         {
             olhos.enabled=true;
             //olho2.enabled=true;
+            agent.speed = 5;
             RaycastHit Hit = new RaycastHit();
             visaoLocal.LookAt(agent.destination = GameObject.FindWithTag("Player").transform.position);
             if (Physics.Raycast(visaoLocal.position, visaoLocal.forward, out Hit, 500, layoso, QueryTriggerInteraction.Ignore))
