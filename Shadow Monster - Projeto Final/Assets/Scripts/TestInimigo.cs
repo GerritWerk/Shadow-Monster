@@ -19,7 +19,7 @@ public class TestInimigo : MonoBehaviour
     public GameObject ponto4;
     public GameObject ponto5;
 
-    public Animator animator;
+    //public Animator animator;
     public Light olhos;
    // public Light olho2;
 

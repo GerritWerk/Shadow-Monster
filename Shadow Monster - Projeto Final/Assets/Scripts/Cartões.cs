@@ -8,6 +8,7 @@ public class Cartões : MonoBehaviour
     private bool Colider;
     public bool Com_Cartao = false;
     public AudioSource peguei;
+    public GameObject modelo;
     void Start()
     {
         peguei = GetComponent<AudioSource>();
@@ -16,11 +17,11 @@ public class Cartões : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E)&& Colider)
+        if(Input.GetKeyDown(KeyCode.E)&& Colider && Com_Cartao == false)
 		{
             Com_Cartao = true;
-            gameObject.SetActive(false);
-            peguei.Play();
+            modelo.SetActive(false);
+			peguei.Play();
             //Debug.Log("Peguei?");
 		}
     }
