@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject Menu;
 
     public AudioSource passos;
+   // public AudioSource Lan;
 
     private bool audioPlay;
     
@@ -37,7 +38,9 @@ public class Player : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             Time.timeScale = 0;
+           // Lan.Pause();
 		}
+        
         if (Input.GetKeyDown(KeyCode.E)&&saida){
             SceneManager.LoadScene("Menu");
         }
@@ -56,6 +59,8 @@ public class Player : MonoBehaviour
             audioPlay = false;
             
         }
+
+       
 
     }
 

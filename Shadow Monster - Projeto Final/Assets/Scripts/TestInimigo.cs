@@ -23,8 +23,9 @@ public class TestInimigo : MonoBehaviour
     public Light olhos;
    // public Light olho2;
 
-    private Vector3 Latspos;
+    public Vector3 Latspos;
     GameObject ponto_Atual;
+    //Seguir seguir;
     void Start()
     {
         
@@ -40,15 +41,15 @@ public class TestInimigo : MonoBehaviour
        // animator.Play("mixamo_com");
         
 	}
-    private void Pratrulha()
+    public void Pratrulha()
 	{
         olhos.enabled = false;
         //olho2.enabled = false;
         agent.speed = 2;
         agent.SetDestination(ponto_Atual.transform.position);
 	}
-	private void Seguindo()
-	{
+    private void Seguindo()
+    {
         if (Seguir == true)
         {
             WaitTime = 0;
@@ -65,7 +66,7 @@ public class TestInimigo : MonoBehaviour
 
         if (WaitTime <= 5)
         {
-            olhos.enabled=true;
+            olhos.enabled = true;
             //olho2.enabled=true;
             agent.speed = 5;
             RaycastHit Hit = new RaycastHit();
@@ -96,7 +97,7 @@ public class TestInimigo : MonoBehaviour
         }
     }
 
-	private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.name.Equals(ponto1.gameObject.name))
 		{
