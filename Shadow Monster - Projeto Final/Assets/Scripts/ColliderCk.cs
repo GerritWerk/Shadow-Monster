@@ -9,7 +9,7 @@ public class ColliderCk : MonoBehaviour
 	{
 		if (other.tag == "Player")
 		{
-			script.Seguir = true;
+			script.IniciarPerseguicao();
 		}
 	}
 
@@ -17,7 +17,7 @@ public class ColliderCk : MonoBehaviour
 	{
 		if (other.tag == "Player")
 		{
-			script.Seguir = false;
+			script.IniciarPatrulha();
 		}
 	}
 }

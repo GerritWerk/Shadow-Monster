@@ -21,15 +21,29 @@ public class TestInimigo : MonoBehaviour
 
     //public Animator animator;
     public Light olhos;
-   // public Light olho2;
+    // public Light olho2;
 
     public Vector3 Latspos;
     GameObject ponto_Atual;
+    public AudioSource Ruido_Ataque;
+    public AudioSource Ruido_Patrulha;
+   // public AudioClip[] RuidosClips;
     //Seguir seguir;
     void Start()
     {
-        
+        if(Ruido_Ataque == null)
+        {
+           // Debug.LogError("Ruido Ataque não foi no expretor");
+        }
+
+        if(Ruido_Patrulha == null)
+        {
+           // Debug.LogError("Ruido patrulha não colocado");
+        }
         ponto_Atual = ponto1;
+        IniciarPatrulha();
+        Ruido_Patrulha.Play();
+        
     }
 
     // Update is called once per frame
@@ -44,8 +58,11 @@ public class TestInimigo : MonoBehaviour
     public void Pratrulha()
 	{
         olhos.enabled = false;
-        //olho2.enabled = false;
-        agent.speed = 2;
+       // Ruido_Ataque.Stop();
+		
+
+		//olho2.enabled = false;
+		agent.speed = 2;
         agent.SetDestination(ponto_Atual.transform.position);
 	}
     private void Seguindo()
@@ -67,8 +84,11 @@ public class TestInimigo : MonoBehaviour
         if (WaitTime <= 5)
         {
             olhos.enabled = true;
-            //olho2.enabled=true;
-            agent.speed = 5;
+			//Ruido_Ataque.Stop();
+			
+
+			//olho2.enabled=true;
+			agent.speed = 5;
             RaycastHit Hit = new RaycastHit();
             visaoLocal.LookAt(agent.destination = GameObject.FindWithTag("Player").transform.position);
             if (Physics.Raycast(visaoLocal.position, visaoLocal.forward, out Hit, 500, layoso, QueryTriggerInteraction.Ignore))
@@ -130,4 +150,18 @@ public class TestInimigo : MonoBehaviour
             SceneManager.LoadScene("SampleScene");
         }
     }
+
+    public void IniciarPerseguicao()
+    {
+        Seguir = true;
+        Ruido_Ataque.Play();
+        Ruido_Patrulha.volume = 0.1f;
+    }
+
+	public void IniciarPatrulha()
+	{
+        Seguir = false;
+        Ruido_Patrulha.volume = 1;
+        Ruido_Ataque.Pause();
+	}
 }
