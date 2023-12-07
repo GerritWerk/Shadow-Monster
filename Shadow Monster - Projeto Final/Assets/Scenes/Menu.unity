@@ -1390,7 +1390,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 7c54e5dc2d5a76842bf5e850bdc4fb93, type: 3}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -1404,20 +1404,20 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Desenvolvedor:
 
-    Gerrit  B. de Werk
+    Gerrit B. de Werk
 
 
     Som:
 
-    Passos  de Nox
-    Sounds
+    Passos de Nox Sounds
 
-    Menu  de Echo10
+    Menu
+    de Echo10
 
 
     assets:
 
-    door asset  de Isanvel(itch.io)'
+    door asset de Isanvel(itch.io)'
 --- !u!222 &910770021
 CanvasRenderer:
   m_ObjectHideFlags: 0
